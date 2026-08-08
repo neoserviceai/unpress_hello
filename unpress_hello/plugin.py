@@ -26,7 +26,11 @@ def manifest() -> dict:
 		"title": _("Hello"),
 		"description": _("An example plugin: one page, one endpoint, one prompt."),
 		"app_name": "unpress_hello",
-		"icon": "lucide-hand",
+		# The Studio compiles its icon CSS from its own sources, so a name it
+		# does not already bundle draws nothing and falls back to the puzzle
+		# piece. Naming the fallback outright is more honest than picking a
+		# nicer icon and getting the puzzle piece anyway.
+		"icon": "lucide-puzzle",
 		# Routes under this prefix 404 when the plugin is off. Leave empty when
 		# the plugin serves no public route.
 		"route_prefix": "hello",

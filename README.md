@@ -13,12 +13,21 @@ anything.
 ```
 unpress_hello/
 ├── hooks.py              ← declares the app to Frappe and to Unpress
+├── modules.txt           ← required: bench ignores an app without it
+├── patches.txt           ← required: both sections, even empty
 ├── plugin.py             ← the registry entry + the guard
 ├── api.py                ← a whitelisted endpoint, guarded
 ├── ai_context.py         ← what the AI should know about this plugin
 ├── www/hello.py|html     ← a public page that wears the site chrome
 └── public/css/hello.css  ← its own styles, scoped to its own classes
 ```
+
+> `modules.txt` and `patches.txt` are not decoration. Bench decides whether a
+> directory is a Frappe app by looking for `hooks.py`, `modules.txt` **and**
+> `patches.txt`; miss one and `bench get-app` clones your repo, pip-installs
+> it, and then leaves it out of `sites/apps.txt` — so `install-app` fails with
+> `App <name> not in apps.txt` and nothing explains why. `bench new-app`
+> writes all three for you; a hand-built plugin has to remember.
 
 ## Install it
 

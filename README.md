@@ -32,7 +32,7 @@ unpress_hello/
 ## Install it
 
 ```bash
-bench get-app https://github.com/bvisible/unpress_hello
+bench get-app https://github.com/neoserviceai/unpress_hello
 bench --site your.site install-app unpress_hello
 bench --site your.site migrate
 ```
